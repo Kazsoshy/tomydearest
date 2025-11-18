@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hii Eriiiii</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero" role="banner">
+    
+    <div class="hero-inner">
+      <h1 id="site-title">Happy Monthsary — Us</h1>
+      <p id="sub">Every month with you is my favorite month.</p>
+      <div class="controls">
+        <button id="celebrateBtn" aria-label="Celebrate monthsary">Celebrate 🎉</button>
+        <button id="letterBtn" aria-label="Read my letter">Read My Letter 💌</button>
+        <a id="downloadGallery" href="#" download="monthsary.zip" hidden>Download</a>
+      </div>
+    </div>
+    
+  </header>
+
+  <main>
+    <section class="gallery-section" aria-labelledby="gallery-title">
+      <h2 id="gallery-title">My Faves</h2>
+      <div id="gallery" class="gallery" tabindex="0" aria-live="polite">
+        <!-- Images will be injected here by script.js -->
+      </div>
+    </section>
+    
+
+    <section class="slideshow-section" aria-labelledby="slideshow-title">
+      <h2 id="slideshow-title">Slideshow</h2>
+      <div class="slideshow">
+        <button id="prev" class="nav" aria-label="Previous image">‹</button>
+        <div class="slide-frame">
+          <img id="slideImage" src="" alt="Slideshow image" />
+          <figcaption id="slideCaption"></figcaption>
+        </div>
+        <button id="next" class="nav" aria-label="Next image">›</button>
+      </div>
+      <div class="slideshow-controls">
+        <label><input type="checkbox" id="autoPlay"> Auto-play</label>
+        <label for="speed">Speed:</label>
+        <input id="speed" type="range" min="1000" max="7000" value="3500" />
+      </div>
+    </section>
+
+    <section class="timeline-section" aria-labelledby="timeline-title">
+      <h2 id="timeline-title">I said I loved you first</h2>
+      <ol id="timeline" class="timeline">
+        <!-- timeline items injected by script.js -->
+      </ol>
+      <form id="noteForm" class="note-form" aria-label="Add timeline note">
+  <!-- <input id="noteMonth" placeholder="Month (e.g. 1st, 6th)" required />
+        <input id="noteText" placeholder="Short memory or note" required />
+        <button type="submit">Add</button> -->
+      </form>
+    </section>
+  </main>
+
+  <!-- Lightbox modal -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+    <button id="closeLightbox" class="close" aria-label="Close">✕</button>
+    <img id="lightboxImg" src="" alt="" />
+    <p id="lightboxCaption"></p>
+  </div>
+
+  <!-- Letter Modal -->
+  <div id="letterModal" class="letter-modal" role="dialog" aria-modal="true">
+    <div class="letter-container">
+      <button id="closeLetterBtn" class="close-letter" aria-label="Close letter">✕</button>
+      <div class="letter-content">
+        <div class="letter-header">
+          <h3>To My Dearest Love 💕</h3>
+          <p class="letter-date">This Month & Always</p>
+        </div>
+        <div class="letter-body">
+          <p>My Love,</p>
+          
+          <p>Every moment with you feels like a beautiful dream I never want to wake up from. Each month that passes brings us closer, and I find myself falling more deeply in love with you.</p>
+          
+          <p>You are my sunshine on cloudy days, my laughter in quiet moments, and my peace in the chaos of life. Thank you for being you—perfectly imperfect and absolutely wonderful.</p>
+          
+          <p>Here's to another month of adventures, inside jokes, late-night conversations, and making memories that will last forever. I can't wait to see what the future holds for us.</p>
+          
+          <p>Happy monthsary, my darling. I love you more than words could ever express.</p>
+          
+          <p class="letter-signature">Forever yours,<br><strong>Your Love</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="flowerContainer"></div>
+  <div id="bouquetContainer"></div>
+
+
+  <canvas id="confettiCanvas" class="confetti"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
