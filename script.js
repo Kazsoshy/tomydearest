@@ -16,7 +16,7 @@ const IMAGES = [
 -----------------------------------------*/
 const DEFAULT_NOTES = [
   { month: "1", text: "I love you" },
-  { month: "2", text: "I love you MOREEE" },
+  { month: "4", text: "I love you MOREEE" },
   { month: "3", text: "I lovee youuu INFINITEEEE" }
 ];
 
@@ -274,6 +274,109 @@ document.addEventListener("DOMContentLoaded", () => {
       bouquetContainer.style.transform = "translateX(-50%) scale(1)";
     }, 1300);
   }
+
+  /* ---------------------------------------
+     QUESTION GAME
+  -----------------------------------------*/
+  const questions = [
+    {
+      question: "When was our lock-in date?",
+      options: ["April 19th", "April 20th"],
+      correct: 0, // Index of correct answer
+      feedback: {
+        correct: "Yesss! Wowers sanaol na remember, I mean ofc ka remember pud ko bb. 💖",
+        incorrect: "Nope, aray kohh gegegege. It was April 19th! 📅"
+      }
+    },
+    {
+      question: "What was the first movie series we watched together?",
+      options: ["A Rom-Com 🤍", "Fantasy Action 🐲"],
+      correct: 1,
+      feedback: {
+        correct: "Spot on! That fantasy action-packed night was epic. 🐲🐲🐲",
+        incorrect: "It was a Fantasy Action flick! Next time, we'll pick a rom-com. 🎥"
+      }
+    },
+    {
+      question: "Do you love me?",
+      options: ["Yes", "Yes"],
+      correct: 0,
+      feedback: {
+        correct: "But I love you MOREEEEEE🏆📢🥰🥰",
+        incorrect: "What do u expect? di ko musugot di ko nimo love bb :> 🤗"
+      }
+    },
+    {
+      question: "Did you like me first?",
+      options: ["Noooo", "yes I liked you first my bb <3"],
+      correct: 1,
+      feedback: {
+        correct: "Exactly! and I fell for you harder each day. 😍",
+        incorrect: "we both know the truth mwehehhehe. You liked me first! 😘"
+      }
+    },
+    {
+      question: "What's the best part of our late-night convos?",
+      options: ["The laughs", "Everything"],
+      correct: 1,
+      feedback: {
+        correct: "Everything! You're my everything. 💖",
+        incorrect: "It's everything, bb. The laughs are just the cherry on top. 🍒"
+      }
+    }
+  ];
+
+  let currentQuestionIndex = 0;
+  let score = 0;
+  const questionEl = document.getElementById('question');
+  const option1El = document.getElementById('option1');
+  const option2El = document.getElementById('option2');
+  const resultEl = document.getElementById('result');
+  const resetBtn = document.getElementById('resetGame');
+
+  function loadQuestion() {
+    if (currentQuestionIndex < questions.length) {
+      const q = questions[currentQuestionIndex];
+      questionEl.textContent = q.question;
+      option1El.textContent = q.options[0];
+      option2El.textContent = q.options[1];
+      resultEl.textContent = '';
+      resetBtn.style.display = 'none';
+    } else {
+      // Game over
+      questionEl.textContent = '';
+      option1El.style.display = 'none';
+      option2El.style.display = 'none';
+      resultEl.textContent = `Game over! You got ${score}/${questions.length} correct. I lovee youuu, Eriiiii! 💕`;
+      resetBtn.style.display = 'block';
+    }
+  }
+
+  function checkAnswer(selectedIndex) {
+    const q = questions[currentQuestionIndex];
+    if (selectedIndex === q.correct) {
+      score++;
+      resultEl.textContent = q.feedback.correct;
+    } else {
+      resultEl.textContent = q.feedback.incorrect;
+    }
+    currentQuestionIndex++;
+    setTimeout(loadQuestion, 4000); // Auto-advance after 4 seconds
+  }
+
+  option1El.addEventListener('click', () => checkAnswer(0));
+  option2El.addEventListener('click', () => checkAnswer(1));
+
+  resetBtn.addEventListener('click', () => {
+    currentQuestionIndex = 0;
+    score = 0;
+    option1El.style.display = 'inline-block';
+    option2El.style.display = 'inline-block';
+    loadQuestion();
+  });
+
+  // Initialize the game
+  loadQuestion();
 
   /* ---------------------------------------
      HTML ESCAPE UTILITY
